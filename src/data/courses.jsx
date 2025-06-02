@@ -2,18 +2,21 @@
 const courses = [
   {
     id: 1,
-    title: "Introduktion till React",
-    description: "Lär dig grunderna i komponentbaserad utveckling med React.",
+    title: "Webbutveckling",
+    description: "Lär dig HTML, CSS, JavaScript och moderna ramverk.",
+    image: "https://picsum.photos/id/1011/1200/500",
   },
   {
     id: 2,
-    title: "Introduktion till React",
-    description: "Lär dig grunderna i komponentbaserad utveckling med React.",
+    title: "Datavetenskap",
+    description: "Algoritmer, datastrukturer och programmering i djupet.",
+    image: "https://picsum.photos/id/1005/1200/500",
   },
   {
     id: 3,
-    title: "Introduktion till React",
-    description: "Lär dig grunderna i komponentbaserad utveckling med React.",
+    title: "UI/UX Design",
+    description: "Designa användarupplevelser med stil och funktion.",
+    image: "https://picsum.photos/id/1025/1200/500",
   },
 ];
 

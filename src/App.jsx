@@ -7,12 +7,14 @@ import Courses from './pages/Courses';
 import CourseDetails from './pages/CourseDetails';
 import News from './pages/News';
 import Register from './pages/Register';
+import Footer from './components/Footer';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className="container mt-4">
+      <div className="main-content container mt-4">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
@@ -21,6 +23,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }
