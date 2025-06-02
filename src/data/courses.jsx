@@ -7,13 +7,13 @@ const courses = [
   },
   {
     id: 2,
-    title: "JavaScript för Webben",
-    description: "Fördjupning i JavaScript, DOM och eventhantering.",
+    title: "Introduktion till React",
+    description: "Lär dig grunderna i komponentbaserad utveckling med React.",
   },
   {
     id: 3,
-    title: "Fullstack-utveckling",
-    description: "Backend med Node.js och frontend med React.",
+    title: "Introduktion till React",
+    description: "Lär dig grunderna i komponentbaserad utveckling med React.",
   },
 ];
 

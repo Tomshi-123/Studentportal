@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { Navbar as BSNavbar, Nav, Container } from 'react-bootstrap';
 
 const Navbar = () => (
-  <BSNavbar bg="light" expand="lg">
+  <BSNavbar expand="lg" variant="dark" className="bg-primary shadow-sm">
     <Container>
-      <BSNavbar.Brand as={Link} to="/">
-        StudentPortal
+      <BSNavbar.Brand as={Link} to="/" className="fw-bold">
+        <i className="bi bi-mortarboard-fill me-2"></i> StudentPortal
       </BSNavbar.Brand>
       <BSNavbar.Toggle />
       <BSNavbar.Collapse>
@@ -23,4 +23,3 @@ const Navbar = () => (
 );
 
 export default Navbar;
-

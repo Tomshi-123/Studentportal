@@ -20,7 +20,11 @@ const RegisterForm = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 400, mx: "auto" }}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ maxWidth: 400, mx: "auto" }}
+    >
       <TextField
         fullWidth
         margin="normal"
@@ -50,7 +54,13 @@ const RegisterForm = () => {
         onChange={handleChange}
         required
       />
-      <Button variant="contained" color="primary" type="submit" fullWidth sx={{ mt: 2 }}>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        fullWidth
+        sx={{ mt: 2 }}
+      >
         Registrera
       </Button>
     </Box>
