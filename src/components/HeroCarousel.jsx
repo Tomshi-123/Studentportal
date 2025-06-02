@@ -8,19 +8,19 @@ const courses = [
     id: 1,
     title: "Webbutveckling",
     description: "Lär dig HTML, CSS, JavaScript och moderna ramverk.",
-    image: "https://picsum.photos/id/1011/1200/500",
+    image: "https://cdn.pixabay.com/photo/2023/09/06/18/10/ai-generated-8237711_1280.jpg",
   },
   {
     id: 2,
     title: "Datavetenskap",
     description: "Algoritmer, datastrukturer och programmering i djupet.",
-    image: "https://picsum.photos/id/1005/1200/500",
+    image: "https://cdn.pixabay.com/photo/2017/03/04/12/15/programming-2115930_1280.jpg",
   },
   {
     id: 3,
     title: "UI/UX Design",
     description: "Designa användarupplevelser med stil och funktion.",
-    image: "https://picsum.photos/id/1025/1200/500",
+    image: "https://cdn.pixabay.com/photo/2024/04/18/10/09/woman-8703991_1280.jpg",
   },
 ];
 
