@@ -1,13 +1,22 @@
-// src/components/RegisterForm.jsx
-import React, { useState } from "react";
-import { TextField, Button, Box } from "@mui/material";
+import React, { useState, useContext } from "react";
+import { TextField, Button, Box, MenuItem, Typography } from "@mui/material";
+import { RegistrationContext } from "../context/RegistrationContext";
+
+const courses = [
+  "Webbutveckling",
+  "Datavetenskap",
+  "UI/UX Design",
+];
 
 const RegisterForm = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
+    course: "",
   });
+
+  const { registerStudent } = useContext(RegistrationContext);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,16 +24,29 @@ const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Registrering skickad:", form);
-    alert("Tack för din registrering!");
+    registerStudent(form);
+    alert(`Tack ${form.name}, du har registrerat dig för ${form.course}!`);
+    setForm({ name: "", email: "", password: "", course: "" });
   };
 
   return (
     <Box
       component="form"
       onSubmit={handleSubmit}
-      sx={{ maxWidth: 400, mx: "auto" }}
+      sx={{
+        maxWidth: 500,
+        mx: "auto",
+        mt: 4,
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 3,
+        backgroundColor: "#fff",
+      }}
     >
+      <Typography variant="h5" mb={2} fontWeight="bold">
+        Registrera dig till en kurs
+      </Typography>
+
       <TextField
         fullWidth
         margin="normal"
@@ -54,12 +76,29 @@ const RegisterForm = () => {
         onChange={handleChange}
         required
       />
+      <TextField
+        fullWidth
+        select
+        margin="normal"
+        label="Välj en kurs"
+        name="course"
+        value={form.course}
+        onChange={handleChange}
+        required
+      >
+        {courses.map((course, index) => (
+          <MenuItem key={index} value={course}>
+            {course}
+          </MenuItem>
+        ))}
+      </TextField>
+
       <Button
         variant="contained"
         color="primary"
         type="submit"
         fullWidth
-        sx={{ mt: 2 }}
+        sx={{ mt: 3 }}
       >
         Registrera
       </Button>

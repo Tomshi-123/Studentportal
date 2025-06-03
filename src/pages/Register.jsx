@@ -4,7 +4,6 @@ import RegisterForm from "../components/RegisterForm";
 
 const Register = () => (
   <div>
-    <h2>Registrera dig</h2>
     <RegisterForm />
   </div>
 );
