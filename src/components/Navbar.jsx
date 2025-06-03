@@ -86,6 +86,9 @@ const Navbar = () => {
               <Nav.Link as={Link} to="/register">
                 Registrera
               </Nav.Link>
+              <Nav.Link as={Link} to="/my-courses">
+                Mina kurser
+              </Nav.Link>
             </Nav>
 
             {/* Desktop sökfält */}

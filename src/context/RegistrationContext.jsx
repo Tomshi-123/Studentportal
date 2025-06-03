@@ -1,18 +1,16 @@
 import React, { createContext, useState } from "react";
 
-// Skapa context
 export const RegistrationContext = createContext();
 
-// Provider-komponent
 export const RegistrationProvider = ({ children }) => {
-  const [registrations, setRegistrations] = useState([]);
+  const [registeredCourses, setRegisteredCourses] = useState([]);
 
-  const registerStudent = (newRegistration) => {
-    setRegistrations((prev) => [...prev, newRegistration]);
+  const registerStudent = (form) => {
+    setRegisteredCourses((prev) => [...prev, form]);
   };
 
   return (
-    <RegistrationContext.Provider value={{ registrations, registerStudent }}>
+    <RegistrationContext.Provider value={{ registeredCourses, registerStudent }}>
       {children}
     </RegistrationContext.Provider>
   );
