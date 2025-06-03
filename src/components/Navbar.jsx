@@ -1,4 +1,4 @@
-// src/components/Navbar.jsx
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -84,7 +84,7 @@ const Navbar = () => {
                 Nyheter
               </Nav.Link>
               <Nav.Link as={Link} to="/register">
-                Registrera
+                Registrera dig
               </Nav.Link>
               <Nav.Link as={Link} to="/my-courses">
                 Mina kurser
