@@ -22,7 +22,7 @@ const CourseDetails = () => {
 
   return (
     <div>
-    <h1 className="display-6 fw-bold">{course.title}</h1>
+    <h1 className="display-6 fw-bold text-center">{course.title}</h1>
     
     <Container className="my-5">
       <Card className="shadow-sm">
@@ -33,7 +33,7 @@ const CourseDetails = () => {
           style={{ maxHeight: '400px', objectFit: 'cover' }}
         />
         <Card.Body>
-          <Card.Title>{course.title}</Card.Title>
+          <Card.Title >{course.title}</Card.Title>
           <Card.Text style={{ fontSize: '1.1rem', lineHeight: '1.5' }}>
             {course.description}
           </Card.Text>
