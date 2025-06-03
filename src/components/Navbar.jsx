@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar as BSNavbar,
@@ -14,34 +13,54 @@ import courses from "../data/courses";
 const Navbar = () => {
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+
+  // State som styr om hamburgermenyn är öppen
+  const [expanded, setExpanded] = useState(false);
+
   const navigate = useNavigate();
+
+  // Funktion som stänger menyn när vi scrollar
+  useEffect(() => {
+    const handleScroll = () => {
+      if (expanded) {
+        setExpanded(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [expanded]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const searchTerm = query.trim().toLowerCase();
 
     if (searchTerm) {
-      // Leta efter kurs som matchar sökordet (delmatch)
       const matchedCourse = courses.find((course) =>
         course.title.toLowerCase().includes(searchTerm)
       );
 
       if (matchedCourse) {
-        // Navigera till kursens sida
         navigate(`/courses/${matchedCourse.id}`);
       } else {
-        // Om ingen kurs matchar, navigera till kurssidan med sökparam (kan visa tomt resultat)
         navigate(`/courses?search=${encodeURIComponent(searchTerm)}`);
       }
 
       setQuery("");
       setShowSearch(false);
+      setExpanded(false); // Stäng menyn efter sök också
     }
   };
 
   return (
     <>
       <BSNavbar
+        expanded={expanded}          // <- Här kopplar vi expanded state
+        onToggle={setExpanded}       // <- Toggle-funktionen uppdaterar state
         expand="lg"
         variant="dark"
         className="bg-primary shadow-sm"
@@ -52,7 +71,7 @@ const Navbar = () => {
             <i className="bi bi-mortarboard-fill me-2"></i> StudentPortal
           </BSNavbar.Brand>
           <div className="d-flex align-items-center">
-            {/* Mobil sökknapp - UTANFÖR BSNavbar.Collapse, bredvid hamburgermenyn */}
+            {/* Mobil sökknapp - UTANFÖR BSNavbar.Collapse */}
             <Button
               variant="outline-light"
               className="d-lg-none me-2"
@@ -74,19 +93,19 @@ const Navbar = () => {
 
           <BSNavbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)}>
                 Start
               </Nav.Link>
-              <Nav.Link as={Link} to="/courses">
+              <Nav.Link as={Link} to="/courses" onClick={() => setExpanded(false)}>
                 Kurser
               </Nav.Link>
-              <Nav.Link as={Link} to="/news">
+              <Nav.Link as={Link} to="/news" onClick={() => setExpanded(false)}>
                 Nyheter
               </Nav.Link>
-              <Nav.Link as={Link} to="/register">
+              <Nav.Link as={Link} to="/register" onClick={() => setExpanded(false)}>
                 Registrera dig
               </Nav.Link>
-              <Nav.Link as={Link} to="/my-courses">
+              <Nav.Link as={Link} to="/my-courses" onClick={() => setExpanded(false)}>
                 Mina kurser
               </Nav.Link>
             </Nav>
@@ -132,7 +151,7 @@ const Navbar = () => {
         </Container>
       </BSNavbar>
 
-      {/* Mobil sökfält som visas när man klickar på mobil-sökknappen */}
+      {/* Mobil sökfält */}
       {showSearch && (
         <Container fluid="md" className="mt-2 d-lg-none">
           <Form

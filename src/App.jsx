@@ -9,6 +9,7 @@ import News from "./pages/News";
 import Register from "./pages/Register";
 import Footer from "./components/Footer";
 import MyCourses from "./pages/MyCourses";
+import NewsDetails from "./pages/NewsDetails";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/register" element={<Register />} />
           <Route path="/my-courses" element={<MyCourses />} />
+          <Route path="/news/:id" element={<NewsDetails />} />
+
         </Routes>
       </div>
       <Footer />
