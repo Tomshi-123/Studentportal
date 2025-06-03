@@ -1,12 +1,18 @@
 import React, { useState, useContext } from "react";
-import { TextField, Button, Box, MenuItem, Typography } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Box,
+  MenuItem,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import { RegistrationContext } from "../context/RegistrationContext";
 
-const courses = [
-  "Webbutveckling",
-  "Datavetenskap",
-  "UI/UX Design",
-];
+const courses = ["Webbutveckling", "Datavetenskap", "UI/UX Design"];
 
 const RegisterForm = () => {
   const [form, setForm] = useState({
@@ -15,7 +21,8 @@ const RegisterForm = () => {
     password: "",
     course: "",
   });
-
+  
+  const [dialogOpen, setDialogOpen] = useState(false);
   const { registerStudent } = useContext(RegistrationContext);
 
   const handleChange = (e) => {
@@ -25,11 +32,16 @@ const RegisterForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     registerStudent(form);
-    alert(`Tack ${form.name}, du har registrerat dig för ${form.course}!`);
-    setForm({ name: "", email: "", password: "", course: "" });
+    setDialogOpen(true); // öppna Dialog
+  };
+
+  const handleClose = () => {
+    setDialogOpen(false);
+    setForm({ name: "", email: "", password: "", course: "" }); // nollställ formuläret
   };
 
   return (
+    <>
     <Box
       component="form"
       onSubmit={handleSubmit}
@@ -103,6 +115,21 @@ const RegisterForm = () => {
         Registrera
       </Button>
     </Box>
+
+          <Dialog open={dialogOpen} onClose={handleClose}>
+        <DialogTitle>Registrering lyckades!</DialogTitle>
+        <DialogContent>
+          <Typography>
+            Tack <strong>{form.name}</strong>, du har registrerat dig för <strong>{form.course}</strong>!
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>
+            Stäng
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };
 
