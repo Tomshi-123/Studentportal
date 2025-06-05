@@ -9,8 +9,19 @@ export const RegistrationProvider = ({ children }) => {
     setRegisteredCourses((prev) => [...prev, form]);
   };
 
-  return (
-    <RegistrationContext.Provider value={{ registeredCourses, registerStudent }}>
+
+  
+  const unregisterStudent = (indexToRemove) => {
+    setRegisteredCourses((prev) =>
+      prev.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
+
+      return (
+    <RegistrationContext.Provider
+      value={{ registeredCourses, registerStudent, unregisterStudent }}
+    >
       {children}
     </RegistrationContext.Provider>
   );
